@@ -15,5 +15,8 @@ import { RouterLink, RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style scoped>
+<style>
+h4 {
+  font-size: 20px;
+}
 </style>

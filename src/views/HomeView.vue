@@ -48,6 +48,7 @@ export default {
 <template>
   <main>
     <div class="events">
+      <h1>Ryan's Events</h1>
       <EventCard v-for="event in events" :key="event.id" :event="event"></EventCard>
     </div>
   </main>
