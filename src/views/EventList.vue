@@ -1,5 +1,6 @@
 <script>
-import EventCard from '@/components/EventCard.vue'
+import EventCard from '@/components/EventCard.vue';
+import EventService from '@/services/EventService.js'
 
 export default {
   name: 'EventList',
@@ -8,41 +9,20 @@ export default {
   },
   data() {
     return {
-      events: [
-        {
-        id: 12345,
-        category: 'meeting',
-        title: 'Breakdown with Client',
-        description: 'Meeting with client to breakdown completed project',
-        location: 'virtual',
-        date: 'December 15, 2022',
-        time: '13:00',
-        organizer: 'Ryan Kidd'
-      },
-        {
-        id: 12346,
-        category: 'social',
-        title: 'Lunch with Client',
-        description: 'Lunch with client',
-        location: 'Tobys',
-        date: 'December 18, 2022',
-        time: '13:00',
-        organizer: 'Ryan Kidd'
-      },
-        {
-        id: 12347,
-        category: 'appointment',
-        title: 'Dentist Appointment',
-        description: 'Annual Checkup',
-        location: 'Dr Bastien',
-        date: 'December 25, 2022',
-        time: '16:30',
-        organizer: 'Ryan Kidd'
-      },
-    ]
+      events: null
     }
+  },
+  created() {
+    EventService.getEvents()
+    .then((res) => {
+      this.events = res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   }
-}
+};
+
 </script>
 
 <template>
